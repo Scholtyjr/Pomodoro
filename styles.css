@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Adjust overlay to be slightly darker to make UI more readable */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Remove snow animation since we're going with an ocean theme */
+body::after {
+    display: none;
+}
+
+/* Keep the wall panels but make them more subtle */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(0deg, 
+            transparent 24%, 
+            rgba(255, 255, 255, .03) 25%, 
+            rgba(255, 255, 255, .03) 26%, 
+            transparent 27%, 
+            transparent 74%, 
+            rgba(255, 255, 255, .03) 75%, 
+            rgba(255, 255, 255, .03) 76%, 
+            transparent 77%),
+        linear-gradient(90deg, 
+            transparent 24%, 
+            rgba(255, 255, 255, .03) 25%, 
+            rgba(255, 255, 255, .03) 26%, 
+            transparent 27%, 
+            transparent 74%, 
+            rgba(255, 255, 255, .03) 75%, 
+            rgba(255, 255, 255, .03) 76%, 
+            transparent 77%);
+    background-size: 50px 50px;
+    z-index: 2;
+}
+
+/* Update container to be more visible against the snow */
+.container {
+    background-color: rgba(20, 20, 20, 0.7);
+    z-index: 3;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #FF6B6B;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.3),
+                inset 0 0 20px rgba(255, 107, 107, 0.2);
+    backdrop-filter: blur(8px);
+    position: relative;
+    width: 50%;
+    max-width: 400px;
+}
+
+/* Add scanline effect */
+.container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 0, 0, 0.1) 51%,
+        transparent 52%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    animation: scan 10s linear infinite;
+    opacity: 0.2;
+    z-index: 3;
+}
+
+@keyframes scan {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 100%;
+    }
+}
+
+/* Add blinking effect to the timer */
+.timer {
+    animation: blink 4s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    98% { opacity: 1; }
+    99% { opacity: 0.8; }
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+    color: #FF6B6B;
+}
+
+.timer {
+    font-size: 3.5rem;
+    margin: 1.5rem 0;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+    background: linear-gradient(to bottom, #FF6B6B, #FFA07A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.controls button {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    margin: 0.3rem;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    background-color: rgba(255, 107, 107, 0.1);
+    color: #FF6B6B;
+    border: 2px solid #FF6B6B;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.controls button:hover {
+    background-color: #FF6B6B;
+    color: #000000;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+}
+
+.controls #toggle-mode {
+    border-color: #4FB4FF;
+    color: #4FB4FF;
+    background-color: rgba(79, 180, 255, 0.1);
+}
+
+.controls #toggle-mode:hover {
+    background-color: #4FB4FF;
+    color: #000000;
+    box-shadow: 0 0 20px rgba(79, 180, 255, 0.5);
+}
+
+.controls #reset {
+    border-color: #FF0000;
+    color: #FF0000;
+}
+
+.controls #reset:hover {
+    background-color: #FF0000;
+    color: #000000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+.mode {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #4FB4FF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(79, 180, 255, 0.5);
+} 
