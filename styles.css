@@ -208,6 +208,7 @@ h1 {
     font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: none; /* Hide all icons by default */
 }
 
 #launch-mode {
@@ -224,6 +225,16 @@ h1 {
 }
 
 .mode-icons i.active {
+    display: block; /* Only show the active icon */
     filter: brightness(1.5);
     text-shadow: 0 0 15px currentColor;
+}
+
+/* Color styles for the toggle icon */
+.mode-icons i.fa-rocket {
+    color: #FF6B6B;
+}
+
+.mode-icons i.fa-bed {
+    color: #4FB4FF;
 } 

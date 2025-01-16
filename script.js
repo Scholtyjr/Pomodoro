@@ -6,8 +6,7 @@ const minutesDisplay = document.getElementById('minutes');
 const secondsDisplay = document.getElementById('seconds');
 const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
-const launchMode = document.getElementById('launch-mode');
-const restMode = document.getElementById('rest-mode');
+const modeToggle = document.getElementById('mode-toggle');
 const modeText = document.getElementById('mode-text');
 
 const WORK_TIME = 25 * 60; // 25 minutes in seconds
@@ -25,14 +24,8 @@ function updateDisplay() {
     document.title = `${timeString} - ${mode}`;
 }
 
-function updateModeIcons() {
-    if (isWorkTime) {
-        launchMode.classList.add('active');
-        restMode.classList.remove('active');
-    } else {
-        launchMode.classList.remove('active');
-        restMode.classList.add('active');
-    }
+function updateModeIcon() {
+    modeToggle.className = isWorkTime ? 'fas fa-rocket active' : 'fas fa-bed active';
 }
 
 function switchMode() {
@@ -42,7 +35,7 @@ function switchMode() {
     const initialTime = isWorkTime ? '25:00' : '05:00';
     document.title = `${initialTime} - ${isWorkTime ? 'Mission' : 'Rest'}`;
     updateDisplay();
-    updateModeIcons();
+    updateModeIcon();
 }
 
 function startTimer() {
@@ -77,29 +70,12 @@ function resetTimer() {
     modeText.textContent = 'Mission Active';
     document.title = '25:00 - Mission';
     updateDisplay();
-    updateModeIcons();
+    updateModeIcon();
 }
 
-launchMode.addEventListener('click', () => {
-    if (!isWorkTime) {
-        pauseTimer();
-        isWorkTime = true;
-        timeLeft = WORK_TIME;
-        updateDisplay();
-        updateModeIcons();
-        modeText.textContent = 'Mission Active';
-    }
-});
-
-restMode.addEventListener('click', () => {
-    if (isWorkTime) {
-        pauseTimer();
-        isWorkTime = false;
-        timeLeft = BREAK_TIME;
-        updateDisplay();
-        updateModeIcons();
-        modeText.textContent = 'Hangar Rest';
-    }
+modeToggle.addEventListener('click', () => {
+    pauseTimer();
+    switchMode();
 });
 
 startButton.addEventListener('click', startTimer);
