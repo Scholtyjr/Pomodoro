@@ -77,6 +77,11 @@ body::before {
     position: relative;
     width: 50%;
     max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Add scanline effect */
@@ -127,6 +132,18 @@ h1 {
     letter-spacing: 3px;
     text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
     color: #FF6B6B;
+}
+
+.mission-objective {
+    font-weight: bold;
+    font-size: 2rem;
+    color: #FF6B6B;
+    margin: 1.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+    min-height: 1.5em;
+    order: -1;
 }
 
 .timer {
@@ -237,4 +254,82 @@ h1 {
 
 .mode-icons i.fa-bed {
     color: #4FB4FF;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: rgba(20, 20, 20, 0.95);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 2px solid #FF6B6B;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content h2 {
+    color: #FF6B6B;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: normal;
+}
+
+.objective-input {
+    width: calc(100% - 2rem);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    border: 2px solid #FF6B6B;
+    border-radius: 5px;
+    color: #FF6B6B;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+.objective-input:focus {
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.modal-button {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    background-color: transparent;
+    color: #FF6B6B;
+    border: 2px solid #FF6B6B;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.modal-button:hover {
+    background-color: rgba(255, 107, 107, 0.1);
+    color: #FF6B6B;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
 } 

@@ -8,10 +8,21 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="mission-modal" class="modal">
+        <div class="modal-content">
+            <h2>Enter your mission objective:</h2>
+            <input type="text" id="objective-input" class="objective-input">
+            <div class="modal-buttons">
+                <button id="modal-ok" class="modal-button">OK</button>
+                <button id="modal-cancel" class="modal-button">Cancel</button>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="mode-icons">
             <i class="fas fa-rocket active" id="mode-toggle" title="Toggle Mode"></i>
         </div>
+        <div id="mission-objective" class="mission-objective"></div>
         <h1>X-Wing Mission Timer</h1>
         <div class="timer">
             <span id="minutes">25</span>:<span id="seconds">00</span>
