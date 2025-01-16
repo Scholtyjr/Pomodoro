@@ -6,8 +6,8 @@ const minutesDisplay = document.getElementById('minutes');
 const secondsDisplay = document.getElementById('seconds');
 const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
-const resetButton = document.getElementById('reset');
-const toggleButton = document.getElementById('toggle-mode');
+const launchMode = document.getElementById('launch-mode');
+const restMode = document.getElementById('rest-mode');
 const modeText = document.getElementById('mode-text');
 
 const WORK_TIME = 25 * 60; // 25 minutes in seconds
@@ -25,14 +25,24 @@ function updateDisplay() {
     document.title = `${timeString} - ${mode}`;
 }
 
+function updateModeIcons() {
+    if (isWorkTime) {
+        launchMode.classList.add('active');
+        restMode.classList.remove('active');
+    } else {
+        launchMode.classList.remove('active');
+        restMode.classList.add('active');
+    }
+}
+
 function switchMode() {
     isWorkTime = !isWorkTime;
     timeLeft = isWorkTime ? WORK_TIME : BREAK_TIME;
     modeText.textContent = isWorkTime ? 'Mission Active' : 'Hangar Rest';
-    toggleButton.textContent = isWorkTime ? 'Rest' : 'Mission';
     const initialTime = isWorkTime ? '25:00' : '05:00';
     document.title = `${initialTime} - ${isWorkTime ? 'Mission' : 'Rest'}`;
     updateDisplay();
+    updateModeIcons();
 }
 
 function startTimer() {
@@ -67,16 +77,33 @@ function resetTimer() {
     modeText.textContent = 'Mission Active';
     document.title = '25:00 - Mission';
     updateDisplay();
+    updateModeIcons();
 }
 
-toggleButton.addEventListener('click', () => {
-    pauseTimer();
-    switchMode();
+launchMode.addEventListener('click', () => {
+    if (!isWorkTime) {
+        pauseTimer();
+        isWorkTime = true;
+        timeLeft = WORK_TIME;
+        updateDisplay();
+        updateModeIcons();
+        modeText.textContent = 'Mission Active';
+    }
+});
+
+restMode.addEventListener('click', () => {
+    if (isWorkTime) {
+        pauseTimer();
+        isWorkTime = false;
+        timeLeft = BREAK_TIME;
+        updateDisplay();
+        updateModeIcons();
+        modeText.textContent = 'Hangar Rest';
+    }
 });
 
 startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
-resetButton.addEventListener('click', resetTimer);
 
 // Initialize the display
 resetTimer(); 

@@ -193,4 +193,37 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 0 0 10px rgba(79, 180, 255, 0.5);
+}
+
+.mode-icons {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 4;
+}
+
+.mode-icons i {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#launch-mode {
+    color: #FF6B6B;
+}
+
+#rest-mode {
+    color: #4FB4FF;
+}
+
+.mode-icons i:hover {
+    transform: scale(1.2);
+    text-shadow: 0 0 10px currentColor;
+}
+
+.mode-icons i.active {
+    filter: brightness(1.5);
+    text-shadow: 0 0 15px currentColor;
 } 

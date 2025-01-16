@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>X-Wing Mission Timer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
+        <div class="mode-icons">
+            <i class="fas fa-rocket" id="launch-mode" title="Launch Mode"></i>
+            <i class="fas fa-bed" id="rest-mode" title="Rest Mode"></i>
+        </div>
         <h1>X-Wing Mission Timer</h1>
         <div class="timer">
             <span id="minutes">25</span>:<span id="seconds">00</span>
@@ -15,8 +20,6 @@
         <div class="controls">
             <button id="start">Launch</button>
             <button id="pause">Standby</button>
-            <button id="reset">Abort</button>
-            <button id="toggle-mode">Rest</button>
         </div>
         <div class="mode">
             <span id="mode-text">Mission Active</span>
